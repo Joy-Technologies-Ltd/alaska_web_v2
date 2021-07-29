@@ -1,0 +1,2 @@
+
+<?php echo $__env->make('backend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /media/heart/Extension/JTL Projects/alaska_web_v2/resources/views/backend/home.blade.php ENDPATH**/ ?>
