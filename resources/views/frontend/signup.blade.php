@@ -33,14 +33,10 @@
 
     </style>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap');
 
-        .bdCareAppRight h1 {
-            text-align: center;
-            font-size: 25px;
-            color: #0a6aa1;
-            box-sizing: border-box;
+    <style>
+        #mySelect .v-select .dropdown-toggle {
+            border: none;
         }
 
         .footer-top {
@@ -64,13 +60,14 @@
 
         }
 
-        body {
-            margin: 0 auto;
-            background-color: #f8f9fa;
-            font-family: Inter;
+        .headline {
+            align-items: center;
+            border-bottom: 1px solid #dadde1;
+            display: flex;
+            margin: 20px 16px;
+            text-align: center;
         }
 
-        .uk-container,
         header .header_inner {
             max-width: 1200px !important;
         }
@@ -187,6 +184,16 @@
             border-radius: 5px;
         }
 
+        .style-chooser .vs__search::placeholder,
+        .style-chooser .vs__dropdown-toggle,
+        .style-chooser .vs__dropdown-menu {
+            background: #dfe5fb;
+            border: none;
+            color: #394066;
+            text-transform: lowercase;
+            font-variant: small-caps;
+        }
+
         .header_dropdown ul {
             padding: 0;
             margin: 0 -20px;
@@ -267,86 +274,16 @@
             position: absolute;
             width: 54%;
             height: 100%;
-            top: 0px;
+            top: 40px;
             right: 0px;
             display: flex;
             -webkit-box-align: center;
             align-items: center;
         }
 
-        .banner1 .objectWrapper {
-            margin-left: auto;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .banner1 .objectWrapper .Image__ImageWrapper {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            box-sizing: border-box;
-            margin: 0px;
-        }
-
-        .objectWrapper .dashboardWrapper {
-            position: absolute;
-            right: 0px;
-        }
-
-        .objectWrapper .dashboardWrapper img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            box-sizing: border-box;
-            margin: 0px;
-        }
-
-
-        .demo-card {
-            text-align: center;
-            color: #4a4a4a;
-            text-transform: capitalize;
-        }
-
-        .demo-card img {
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            margin-right: 1px;
-        }
-
-        .demo-card:hover.demo-card img,
-        .demo-card:hover span.new {
-            transition: 0.4s ease all;
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .demo-card span.new {
-            color: white;
-            padding: 2px 9px;
-            border-radius: 6px;
-            position: absolute;
-            z-index: 1;
-            right: -12px;
-            top: -13px;
-            box-shadow: 2px 2px 3px 0px #cecece;
-        }
-
-        .demo-card p {
-            margin-top: 15px;
-        }
-
-        @media (max-width: 992px) {
-            .banner1 {
-                width: 80%;
-                position: relative;
-                margin: auto;
-            }
-        }
-
     </style>
+
+
 
 </head>
 
@@ -354,18 +291,18 @@
 
     <main class="app-content">
 
-        <div id="Wrapper">
+        <div>
             <header class="border-none bg-transparent" uk-sticky="cls-active: is_fixed ; cls-inactive: bg-transparent">
                 <div class="header_inner">
                     <div class="left-side">
 
                         <!-- Logo -->
                         <div id="logo">
-                            <a href="index.html">
-                                <img src="public/frontend/assets/images/demos/logo.png" alt="" style="height: auto;">
-                                <img src="public/frontend/assets/images/logo-light.html" class="logo_inverse" alt="">
-                                <img src="public/frontend/assets/images/logo-mobile.png" class="logo_mobile" alt="">
-                            </a>
+                            <router-link to="/">
+                                <img src="frontend/assets/images/demos/logo.png" alt="" style="height: auto;">
+                                <img src="frontend/assets/images/logo-light.html" class="logo_inverse" alt="">
+                                <img src="frontend/assets/images/logo-mobile.png" class="logo_mobile" alt="">
+                            </router-link>
                         </div>
 
                         <div class="triger" uk-toggle="target: .header_menu ; cls: is-visible">
@@ -378,29 +315,99 @@
 
                         <ul class="header_menu" uk-scrollspy-nav="closest: li; scroll: true">
                             <li>
-                                <a href="{{url('/sign-in')}}" > Login</a>
+                                <router-link to="/signin" uk-scroll> Login</router-link>
                             </li>
                         </ul>
-                        <a href="{{url('/sign-up')}}"
+                        <router-link to="/signup"
                             class="bg-gradient-to-bl font-semibold from-purple-400 px-8 py-2 ml-8 rounded text-sm text-white to-blue-600 hover:shadow-lg hover:text-white">
                             Registration
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </header>
+            <div class="lg:py-40 pt-24 pb-12 relative -mt-20" id="home" style="height:800px">
 
-            <div class="lg:py-40 pt-24 pb-12 relative -mt-20 bg-white" id="home">
-                <div class="banner1">
-                    <!-- <div class="objectWrapper"> -->
-                    <!-- <img src="public/frontend/assets/images/demos/first-banner.png" alt="" class="Image__ImageWrapper"> -->
-                    <div class="dashboardWrapper">
-                        <img src="public/frontend/assets/images/demos/cover.jpeg" alt="" class="shadow-2xl">
-                    </div>
-                    <!-- </div> -->
-                </div>
+
                 <div class="uk-container mx-auto lg:mt-28">
+                    <div class="banner1">
+                        <!-- <div class="objectWrapper"> -->
+                        <!-- <img src="frontend/assets/images/demos/first-banner.png" alt="" class="Image__ImageWrapper"> -->
+                        <div class="dashboardWrapper">
+{{--                            <form @submit.prevent="signUp"--}}
+{{--                                class="lg:p-10 p-6 space-y-3 relative bg-white shadow-xl rounded-md"--}}
+{{--                                style="width:200%;">--}}
+                            <form action="{{route('reg-user')}}" method="post">
+                                @csrf
+                                <div>
+                                    <h1 class="lg:text-2xl text-xl font-semibold mb-6"> Create your account </h1>
+
+                                    <div>
+                                        <div>
+                                            <label class="mb-0"> Name </label>
+                                            <input type="text" placeholder="Enter your name" name="name"
+                                                class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                                        </div>
+
+                                    </div>
+
+
+                                    <div>
+                                        <label class="mb-0"> Email Address </label>
+                                        <input type="email" name="email" placeholder="enter your email"
+                                            class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                                    </div>
+                                    <div>
+                                        <label class="mb-0"> Phone Number</label>
+                                        <input type="tel" name="phone" placeholder="enter your phone number"
+                                            class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                                    </div>
+                                    <div>
+                                        <label class="mb-0"> Password </label>
+                                        <input type="password" name="password" placeholder="Enter Password"
+                                            class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                                    </div>
+                                    <div>
+                                        <label class="mb-0"> Confirm Password </label>
+                                        <input type="password" name="confirm_password" placeholder="Confirm Password"
+                                            class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                                    </div>
+
+                                    <!-- <div class="grid lg:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="mb-0"> Gender </label>
+                                    <select name="cars" id="Gender" v-model="siginUpForm.gender">
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                    </select>
+
+                                </div>
+
+                            </div> -->
+
+                                    <!-- <div class="checkbox">
+                                <input type="checkbox" id="chekcbox1" checked="">
+                                <label for="chekcbox1"><span class="checkbox-icon"></span> I agree to the <a href="pages-terms.html" target="_blank" class="uk-text-bold uk-text-small uk-link-reset"> Terms and Conditions </a>
+                                </label>
+                            </div> -->
+
+                                    <div>
+                                        <button type="submit"
+                                            class="bg-blue-600 font-semibold p-2 mt-5 rounded-md text-center text-white w-full">
+                                            Sign up</button>
+                                    </div>
+
+                                </div>
+
+
+                            </form>
+
+                        </div>
+                        <!-- </div> -->
+                    </div>
+
                     <div
                         class="lg:w-5/12 lg:space-y-6 text-center lg:text-left lg:block flex flex-col justify-center items-center">
+
 
                         <h1 class="font-bold lg:leading-snug lg:text-4xl text-2xl">
                             Stay connected anywhere with Alaska online
@@ -411,174 +418,71 @@
                         </p>
                         <div class="gap-4">
                             <a href="#" class="bg-gradient-to-bl font-semibold from-purple-500 to-blue-600 px-10 py-2 rounded text-sm text-white
-                                        hover:shadow-lg hover:text-white">
+                            hover:shadow-lg hover:text-white">
                                 Download Now </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:py-20 py-12 lg:mb-24 relative" id="demos">
-                <div class="uk-container mx-auto">
-
-                    <div class="text-center lg:mb-20 mb-10 max-w-md mx-auto">
-                        <h1 class="lg:text-3xl text-2xl mb-2"> Discover more features</h1>
-                        <p> It provides all your favourite features and it’s available in one click.</p>
-                    </div>
-
-
-                    <div class="uk-child-width-1-3@m uk-child-width-1-2@s uk-flex-center"
-                        uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 100" uk-grid>
-
-                        <div>
-                            <a target="_blank" href="#">
-                                <div class="demo-card">
-                                    <img src="public/frontend/assets/images/demos/home-page-meet-name-your-call-party-tab.jpg"
-                                        alt="" style="height: 211.5px;">
-                                    <p> Give your next Alaska Call </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a target="_blank" href="#">
-                                <div class="demo-card">
-                                    <img src="public/frontend/assets/images/demos/livesubtitles.jpg" alt="">
-                                    <p> Live Subtitle </p>
-
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a target="_blank" href="#">
-                                <div class="demo-card">
-                                    <img src="public/frontend/assets/images/demos/features-skype-number.jpg" alt="">
-                                    <p> Alaska Number </p>
-                                </div>
-                            </a>
-                        </div>
 
                     </div>
                 </div>
+
             </div>
 
-            <div class="bg-white" id="features">
+            <!-- <div class="lg:p-12 max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+                        <form  @submit.prevent="signUp" class="lg:p-10 p-6 space-y-3 relative bg-white shadow-xl rounded-md">
+                            <h1 class="lg:text-2xl text-xl font-semibold mb-6"> Register </h1>
 
-                <svg width="100%" height="100px" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px"
-                    viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100" xml:space="preserve"
-                    class="-mt-24 absolute fill-current text-white invisible lg:visible">
-                    <polygon points="2560 0 2560 100 0 100"></polygon>
-                </svg>
+                            <div>
+                                <div>
+                                    <label class="mb-0"> Name </label>
+                                    <input type="text" placeholder="Your Name" name="name" v-model="siginUpForm.name" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                                </div>
 
-                <div class="container-fluid m-auto  py-20">
+                            </div>
+                            <div>
+                                <div>
+                                    <label class="mb-0"> Name </label>
+                                    <input type="text" placeholder="Your Name" name="name" v-model="siginUpForm.name" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                                </div>
 
-                    <div class="text-center mb-3">
-                        <h1 class="text-3xl font-semibold">Keep your life easier with Alaska online </h1>
-                        <p class="mt-2"> Alaska is always ready to provide the full experience even if you don’t have
-                            access
-                            to your phone or desktop app.</p>
-                    </div>
+                            </div>
 
+                            <div>
+                                <label class="mb-0"> Email Address </label>
+                                <input type="email" name="email" placeholder="Info@example.com" v-model="siginUpForm.email" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                            </div>
+                            <div>
+                                <label class="mb-0"> Password </label>
+                                <input type="password" name="password" placeholder="******" v-model="siginUpForm.password" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
+                            </div>
+                            <div class="grid lg:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="mb-0"> Gender </label>
+                                    <select name="cars" id="Gender" v-model="siginUpForm.gender">
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                    </select>
 
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 px-4">
-
-                        <!-- our first cad -->
-                        <div class="rounded p-6">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-12 h-12 text-blue-500 mb-4 mt-6">
-                                <path fill-rule="evenodd"
-                                    d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <h2 class="text-xl font-bold leading-10"> End to end encryption </h2>
-                            <h2>
-                                <p class="font-medium text-gray-600"> We got you and your conversations covered with an
-                                    industry standard end to end encryption. </p>
-
-                            </h2>
-                        </div>
-
-                        <!-- our first cad -->
-                        <div class="rounded p-6">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-12 h-12 text-blue-500 mb-4 mt-6">
-                                <path
-                                    d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z">
-                                </path>
-                            </svg>
-                            <h2 class="text-xl font-bold leading-10"> Sync up your conversations </h2>
-                            <h2>
-                                <p class="font-medium text-gray-600">Use Alaska in your browser for an easy access to
-                                    your
-                                    conversations and chat history.</p>
-
-                            </h2>
-                        </div>
-
-                        <!-- our first cad -->
-                        <div class="rounded p-6">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-12 h-12 text-blue-500 mb-4 mt-6">
-                                <path
-                                    d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z">
-                                </path>
-                            </svg>
-                            <h2 class="text-xl font-bold leading-10"> Supported browsers </h2>
-                            <h2>
-                                <p class="font-medium text-gray-600"> You can enjoy Alaska online experience on
-                                    Microsoft
-                                    Edge, Google Chrome, Safari and Opera browsers.</p>
-
-                            </h2>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-            <div class="" id="features">
-                <div class="container m-auto  py-20">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-                            <div class="bdCareAppLeft">
-                                <div class="bdCareImg">
-
-                                    <img src="public/frontend/assets/images/demos/pngtree-illustration-of-a-woman-with-a-baby-making-video-calls-png-image_1816726.png"
-                                        style="width:70%;height:270px;">
+                                </div>
+                                <div>
+                                    <label class="mb-0"> Phone: optional  </label>
+                                    <input type="text" placeholder="+543 5445 0543" v-model="siginUpForm.phone" class="bg-gray-100 h-12 mt-2 px-3 rounded-md w-full">
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-                            <div class="bdCareAppRight">
-                                <h1>Download the Alaska Audio Video App!</h1>
-                                <p
-                                    style="font-size: 15px;color: #c9c9c9;font-weight: 500;padding: 10px 10px 10px 20px;">
-                                    Alaska is not a replacement for your telephone and can't be used for emergency
-                                    calling
-                                </p>
-                                <div class="d-flex store-btn mt-4" style="margin-left:25%;">
-                                    <div>
-                                        <h4 style="text-align: center;">Alaska App</h4>
-                                        <a target="_blank"
-                                            href="https://play.google.com/store/apps/details?id=com.xyz_doccure.doctor"
-                                            class="mr-2">
-                                            <img src="public/frontend/assets/images/demos/google-play.png">
-                                        </a>
-                                    </div>
 
-                                </div>
+                            <div class="checkbox">
+                                <input type="checkbox" id="chekcbox1" checked="">
+                                <label for="chekcbox1"><span class="checkbox-icon"></span> I agree to the <a href="pages-terms.html" target="_blank" class="uk-text-bold uk-text-small uk-link-reset"> Terms and Conditions </a>
+                                </label>
                             </div>
-                        </div>
 
-                    </div>
+                            <div>
+                                <button type="submit" class="bg-blue-600 font-semibold p-2 mt-5 rounded-md text-center text-white w-full">
+                                    Get Started</button>
+                            </div>
+                        </form>
 
 
-                </div>
-            </div>
-
+                    </div> -->
             <!-- Footer Top -->
             <div class="footer-top">
                 <div class="container-fluid">
@@ -591,7 +495,7 @@
                             <!-- Footer Widget -->
                             <div class="footer-widget footer-about">
                                 <div class="footer-logo">
-                                    <img src="public/frontend/assets/images/demos/logo.png" alt="logo">
+                                    <img src="frontend/assets/images/demos/logo.png" alt="logo">
                                 </div>
                                 <div class="footer-about-content">
                                     <p style="color:white;">Alaska provide expert medical advice and healthcare through
@@ -668,10 +572,12 @@
                         </div>
 
                     </div>
+                    <!-- /Copyright -->
                 </div>
 
             </div>
             <!-- /Footer Top -->
+
 
             <!-- Footer Bottom -->
             <div class="footer-bottom">
@@ -685,7 +591,7 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0" style="color:white;">&copy; 2021 | Alaska. All rights
+                                    <p class="mb-0" style="color:white;">&copy; {{ 2021 }} Alaska. All rights
                                         reserved.</p>
                                 </div>
                             </div>
@@ -717,7 +623,7 @@
     </main>
 
 
-    </div>
+
     <script src="{{ asset('frontend/assets/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/tippy.all.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/uikit.js') }}"></script>

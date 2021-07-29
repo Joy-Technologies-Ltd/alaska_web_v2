@@ -46,12 +46,20 @@ Route::get('hello', function(){
 //    Route::get('/{path}', 'HomeController@index')->where('path','([A-z\d\-\/_.]+)?');
 //});
 
-Route::get('/', function (){
-    return 'Landing Page';
+Route::get('/test', function (){
+    return view('frontend.home');
 });
 
+Route::get('/sign-in', function (){
+    return view('frontend.login');
+});
+Route::get('/sign-up', function (){
+    return view('frontend.signup');
+});
+
+
 //sign-in (admin & user both)
-Route::post('/',[\App\Http\Controllers\UserAuthController::class,'authenticate']);
+Route::post('/',[\App\Http\Controllers\UserAuthController::class,'authenticate'])->name('sign-in');
 
 //sign-out for admin
 Route::get('/',[\App\Http\Controllers\UserAuthController::class,'adminSessionClose']);
@@ -60,10 +68,10 @@ Route::get('/',[\App\Http\Controllers\UserAuthController::class,'adminSessionClo
 Route::get('/',[\App\Http\Controllers\UserAuthController::class,'userSessionClose']);
 
 //sign-up for user
-Route::post('/sign-up',[\App\Http\Controllers\UserAuthController::class,'signUpUser']);
+Route::post('/user-sign-up',[\App\Http\Controllers\UserAuthController::class,'signUpUser'])->name('reg-user');
 
 //sign-up for admin
-Route::post('/sign-up',[\App\Http\Controllers\UserAuthController::class,'signUpAdmin']);
+Route::post('/admin-sign-up',[\App\Http\Controllers\UserAuthController::class,'signUpAdmin'])->name('reg-admin');
 
 //User Protected Routes-----------------------------------------------------------//
 Route::group(['middleware'=>'userAuth'], function (){
