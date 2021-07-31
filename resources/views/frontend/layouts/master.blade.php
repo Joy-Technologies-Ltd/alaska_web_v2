@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,29 +12,39 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-        <!-- icons
+    <!-- icons
     ================================================== -->
-    <link rel="stylesheet" href="{{asset('public/frontend/assets/css/icons.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/icons.css') }}">
 
     <!-- CSS 
-    ================================================== --> 
-    <link rel="stylesheet" href="{{asset('public/frontend/assets/css/uikit.css')}}">
-    <link rel="stylesheet" href="{{asset('public/frontend/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('public/frontend/assets/css/tailwind.css')}}">  
+    ================================================== -->
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/uikit.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/tailwind.css') }}">
     <!-- Styles -->
-    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <style>
-    
-        input , .bootstrap-select.btn-group button{
-            background-color: #f3f4f6  !important;
-            height: 44px  !important;
-            box-shadow: none  !important; 
+        input,
+        .bootstrap-select.btn-group button {
+            background-color: #f3f4f6 !important;
+            height: 44px !important;
+            box-shadow: none !important;
         }
-       
-   
+
     </style>
 </head>
+
 <body>
+
+    <!-- Navbar-->
+    @include('includes.header')
+    <!-- Sidebar menu-->
+    @include('includes.sidebar')
+
+    <main class="app-content">
+
+        @yield('content')
+    </main>
     {{-- <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -93,15 +104,52 @@
             @yield('content')
         </main>
     </div> --}}
-<div id="app_frontend">
-    
-</div>
-<script src="{{asset('public/frontend/assets/js/jquery-3.3.1.min.js')}}"></script> 
-    <script src="{{asset('public/frontend/assets/js/tippy.all.min.js')}}"></script>
-    <script src="{{asset('public/frontend/assets/js/uikit.js')}}"></script>
-    <script src="{{asset('public/frontend/assets/js/simplebar.js')}}"></script>
-    <script src="{{asset('public/frontend/assets/js/custom.js')}}"></script>
-    <script src="{{asset('public/frontend/assets/js/bootstrap-select.min.js')}}"></script>
-<script src="{{ asset('public/js/app_frontend.js') }}" defer></script>
+    {{-- <div id="app_frontend"> --}}
+
+    </div>
+    <script src="{{ asset('frontend/assets/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/tippy.all.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/uikit.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/simplebar.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script>
+    <!-- For Night mode -->
+    <script>
+        (function(window, document, undefined) {
+            'use strict';
+            if (!('localStorage' in window)) return;
+            var nightMode = localStorage.getItem('gmtNightMode');
+            if (nightMode) {
+                document.documentElement.className += ' night-mode';
+            }
+        })(window, document);
+
+        (function(window, document, undefined) {
+
+            'use strict';
+
+            // Feature test
+            if (!('localStorage' in window)) return;
+
+            // Get our newly insert toggle
+            var nightMode = document.querySelector('#night-mode');
+            if (!nightMode) return;
+
+            // When clicked, toggle night mode on or off
+            nightMode.addEventListener('click', function(event) {
+                event.preventDefault();
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('gmtNightMode', true);
+                    return;
+                }
+                localStorage.removeItem('gmtNightMode');
+            }, false);
+
+        })(window, document);
+    </script>
+
+    {{-- <script src="{{ asset('public/js/app_frontend.js') }}" defer></script> --}}
 </body>
+
 </html>

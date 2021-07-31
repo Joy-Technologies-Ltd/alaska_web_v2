@@ -13,14 +13,13 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    
+
     public function signIn(Request $request)
     {
         $user = $request->validate([
             'email'             => 'required|email',
             'password'          => 'required'
         ]);
-
 
        $credential = Auth::attempt($request->only('email', 'password'));
 
@@ -60,9 +59,9 @@ class AuthController extends Controller
             ]);
 
        }
-    
-        
-    } 
+
+
+    }
 
     public function forgetPassword(){
 
@@ -85,12 +84,12 @@ class AuthController extends Controller
         //    return response()->json($validator->errors(), 422);
         // }
 
-        $user =  User::create($request->all()); 
+        $user =  User::create($request->all());
 
         return response()->json([
             'status' => true,
             'message' => 'Registration Success!'
-            ]); 
+            ]);
 
     }
 
