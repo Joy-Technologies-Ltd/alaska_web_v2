@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserAuthController extends Controller
 {
@@ -18,10 +19,10 @@ class UserAuthController extends Controller
                 if (Hash::check($request->password, $userData->password)){
                     if ($userData->signup_status == 0){
                         if ($userData->user_type == 1){
-                            session(['admin_session'=>true]);
+                            session(['admin_session'=> $userData->id]);
                             return 'admin panel access';
                         } else{
-                            session(['user_session'=>true]);
+                            session(['user_session'=> $userData->id]);
                             return view('frontend.profile_update');
                         }
                     } else {
@@ -41,7 +42,7 @@ class UserAuthController extends Controller
     }
     public function userSessionClose(){
         session()->forget('user_session');
-        return redirect()->to('/');
+        return redirect('/');
     }
     public function signUpUser(Request $request){
         $this->validate($request, [
